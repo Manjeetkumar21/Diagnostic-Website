@@ -3,6 +3,9 @@
   --primary-color: #151516;
   --accent-color: #b60605;
   --accent-hover-color: #f7d3d3;
+  --bg-color: #f8f9fa;
+  --text-color: #333;
+  --light-text-color: #6c757d;
 }
 
 body,
@@ -139,10 +142,6 @@ ul {
   font-weight: 600;
 }
 
-.float_left {
-  float: left;
-  width: 100%;
-}
 
 .p-0 {
   padding: 0 !important;
@@ -11059,3 +11058,341 @@ ul {
   text-align: center;
   border-radius: 50px;
 }
+
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  
+}
+
+.hero-section .swiper-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  padding: 0px 60px;
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--accent-hover-color) 100%);
+}
+
+.hero-section .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-section .content {
+  max-width: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .content h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-block: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-section .content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s 0.2s, transform 0.5s 0.2s;
+  color: var(--light-text-color);
+}
+
+.hero-section .swiper-slide-active .content h1,
+.hero-section .swiper-slide-active .content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-section .blob-bg {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 40%;
+  height: 80%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover-color) 100%);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  opacity: 0.2;
+  z-index: 1;
+  animation: blobAnimation 8s ease-in-out infinite;
+}
+
+.hero-section .image-container {
+  width: 50%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .blob-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: blobAnimation 8s ease-in-out infinite alternate;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero-section .blob-image:hover {
+  transform: scale(1.05);
+}
+
+@keyframes blobAnimation {
+  0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.hero-section .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-color);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.hero-section .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 30px;
+  border-radius: 6px;
+}
+
+.hero-section .swiper-button-next,
+.hero-section .swiper-button-prev {
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.hero-section .swiper-button-next:hover,
+.hero-section .swiper-button-prev:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .hero-section .swiper-container {
+      height: auto;
+      padding: 40px 20px;
+  }
+
+  .hero-section .swiper-slide {
+      flex-direction: column;
+  }
+
+  .hero-section .content, 
+  .hero-section .image-container {
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 2rem;
+  }
+
+  .hero-section .content h1 {
+      font-size: 2.5rem;
+  }
+
+  .hero-section .content p {
+      font-size: 1rem;
+  }
+
+  .hero-section .blob-image {
+      max-height: 300px;
+      object-fit: contain;
+  }
+
+  .hero-section .blob-bg {
+      width: 80%;
+      height: 60%;
+      top: 20%;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section .content h1 {
+      font-size: 2rem;
+  }
+
+  .hero-section .content p {
+      font-size: 0.9rem;
+  }
+
+  .hero-section .blob-image {
+      max-height: 250px;
+  }
+}
+
+/* Services Swipper */
+
+.services-swipper{
+ 
+}
+
+.services-swipper .swiper-container {
+  width: 100%;
+  padding: 30px 0 60px;
+  overflow: hidden;
+}
+
+.services-swipper .swiper-slide {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  transition: all 0.3s ease;
+  height: auto;
+}
+
+.services-swipper .swiper-slide:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.services-swipper .procedure-card h3 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.services-swipper .procedure-card .description {
+  color: var(--light-text-color);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.services-swipper .procedure-card .includes {
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.services-swipper .procedure-card .includes h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.services-swipper .procedure-card .includes ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.services-swipper .procedure-card .includes li {
+  margin-bottom: 5px;
+  color: var(--light-text-color);
+}
+
+.services-swipper .procedure-card .price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.services-swipper .procedure-card .price {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.services-swipper .procedure-card .original-price {
+  text-decoration: line-through;
+  color: var(--light-text-color);
+  margin-left: 10px;
+}
+
+.services-swipper .procedure-card .discount-badge {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.services-swipper .swiper-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.services-swipper .swiper-button-next,
+.services-swipper .swiper-button-prev {
+  position: static;
+  width: 40px;
+  height: 40px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  color: white;
+  font-weight: 900;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.services-swipper .swiper-button-next:hover,
+.services-swipper .swiper-button-prev:hover {
+  background-color: var(--primary-color);
+}
+
+.services-swipper .swiper-button-next::after,
+.services-swipper .swiper-button-prev::after {
+  font-size: 15px;
+}
+
+.services-swipper .swiper-pagination-bullet {
+  background-color: var(--accent-color) !important;
+  opacity: 0.5;
+}
+
+.services-swipper .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .services-swipper .swiper-slide {
+    padding: 20px;
+  }
+
+  .services-swipper .procedure-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .services-swipper .procedure-card .price {
+    font-size: 1.3rem;
+  }
+
+  .services-swipper .swiper-button-next,
+  .services-swipper .swiper-button-prev {
+    width: 40px;
+    height: 40px;
+  }
+
+  .services-swipper .swiper-button-next::after,
+  .services-swipper .swiper-button-prev::after {
+    font-size: 16px;
+  }
+}
+
+
