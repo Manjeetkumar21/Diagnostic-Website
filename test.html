@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Health Diagnostic Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #151516;
+            --accent-color: #b60605;
+            --accent-hover-color: #f7d3d3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --light-text-color: #6c757d;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .banner-section {
+            background: linear-gradient(135deg, rgba(21,21,22,0.99), rgba(105, 3, 3, 0.8)), url('/images/banner-img.jpg');
+            background-size: cover;
+            background-position: top;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 50px 0;
+        }
+
+        .banner-content {
+            z-index: 1;
+        }
+
+        .banner-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--bg-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: slideInLeft 1s ease-out;
+            position: relative;
+        }
+
+        .banner-title::after{
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 25%;
+            height: 2px;
+            border-radius: 10px;
+            width: 50%;
+            background-color: white;
+
+        }
+
+        .banner-subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--accent-hover-color);
+            animation: slideInRight 1s ease-out 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .banner-shape {
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .banner-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 50px;
+        }
+
+        .banner-shape .shape-fill {
+            fill: var(--bg-color);
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            color: var(--accent-hover-color);
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .icon-2 { top: 60%; left: 15%; animation-delay: 1s; }
+        .icon-3 { top: 25%; right: 10%; animation-delay: 2s; }
+        .icon-4 { top: 70%; right: 20%; animation-delay: 3s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-section{
+                height: 40vh;
+            }
+            .banner-title {
+                font-size: 2rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+
+            .banner-shape svg {
+                height: 30px;
+            }
+
+            .floating-icon{
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="banner-section">
+        <div class="container banner-content d-flex justify-content-center align-items-center flex-column">
+            <h1 class="banner-title">About Us</h1>
+            <p class="banner-subtitle">Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="floating-icon icon-1"><i class="fas fa-heartbeat"></i></div>
+        <div class="floating-icon icon-2"><i class="fas fa-stethoscope"></i></div>
+        <div class="floating-icon icon-3"><i class="fas fa-user-md"></i></div>
+        <div class="floating-icon icon-4"><i class="fas fa-pills"></i></div>
+        <div class="banner-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Rest of your page content -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

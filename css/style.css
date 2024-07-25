@@ -11420,4 +11420,138 @@ ul {
   }
 }
 
+/* Banner Section */
+
+.banner-section {
+  background: linear-gradient(135deg, rgba(21,21,22,0.99), rgba(105, 3, 3, 0.8)), url('/images/banner-img.jpg');
+  background-size: cover;
+  background-position: top;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 50px 0;
+}
+
+.banner-content {
+  z-index: 1;
+}
+
+.banner-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--bg-color);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  animation: slideInLeft 1s ease-out;
+  position: relative;
+}
+
+.banner-title::after{
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 25%;
+  height: 2px;
+  border-radius: 10px;
+  width: 50%;
+  background-color: var(--bg-color);
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
+}
+
+.banner-subtitle {
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  color: var(--accent-hover-color);
+  animation: slideInRight 1s ease-out 0.5s;
+  animation-fill-mode: both;
+}
+
+.banner-shape {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.banner-shape svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 50px;
+}
+
+.banner-shape .shape-fill {
+  fill: white;
+}
+
+.floating-icon {
+  position: absolute;
+  font-size: 2.5rem;
+  color: var(--accent-hover-color);
+  opacity: 0.7;
+  animation: float 6s ease-in-out infinite;
+}
+
+.icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
+.icon-2 { top: 60%; left: 15%; animation-delay: 1s; }
+.icon-3 { top: 25%; right: 10%; animation-delay: 2s; }
+.icon-4 { top: 70%; right: 20%; animation-delay: 3s; }
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes slideInLeft {
+  from {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+      opacity: 0;
+      transform: translateX(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-section{
+      height: 40vh;
+  }
+  .banner-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+  }
+  
+  .banner-subtitle {
+      font-size: 1rem;
+  }
+
+  .banner-shape svg {
+      height: 30px;
+  }
+
+  .floating-icon{
+      font-size: 1.5rem;
+  }
+}
+
 
