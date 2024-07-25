@@ -988,7 +988,7 @@ header css
 Banner section css
 =================*/
 .banner-section-wrapper {
-  background-image: url(../images/bg-img.jpg);
+  background-image: url("../images/bg-img.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
