@@ -228,6 +228,11 @@ button.button-btn span {
   transition: all 0.5s;
 }
 
+.float_left{
+  float: left;
+  width: 100%;
+}
+
 .select-hidden {
   display: none;
   visibility: hidden;
@@ -2083,6 +2088,10 @@ Services section
   .item-box
   a {
   color: var(--primary-color);
+}
+
+.testimonial-main3 a:hover{
+  color: white !important;
 }
 
 .testimonial-main-wrapper
