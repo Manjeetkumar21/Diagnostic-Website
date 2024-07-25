@@ -11423,7 +11423,7 @@ ul {
 /* Banner Section */
 
 .banner-section {
-  background: linear-gradient(135deg, rgba(21,21,22,0.99), rgba(105, 3, 3, 0.8)), url('/images/banner-img.jpg');
+  background: linear-gradient(135deg, rgba(21,21,22,0.99), rgba(105, 3, 3, 0.8)), url('../images/banner-img.jpg');
   background-size: cover;
   background-position: top;
   height: 60vh;
