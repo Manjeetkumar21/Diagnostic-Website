@@ -3588,6 +3588,8 @@ section:hover .hover-type a {
 
 .testimonial-main3 {
   background-image: url("../images/home3/bg-test-img.jpg");
+  float: left;
+  width: 100%;
 }
 
 .testimonial-main3 .text-color-white {
@@ -11111,8 +11113,17 @@ ul {
   color: var(--light-text-color);
 }
 
+.hero-section .content a{
+  opacity: 0;
+  font-size: 0.9rem;
+  display: inline-block;
+  transform: translateY(20px);
+  transition: opacity 0.5s 0.2s, transform 0.5s 0.2s;
+}
+
 .hero-section .swiper-slide-active .content h1,
-.hero-section .swiper-slide-active .content p {
+.hero-section .swiper-slide-active .content p,
+.hero-section .swiper-slide-active .content a {
   opacity: 1;
   transform: translateY(0);
 }
@@ -11202,6 +11213,7 @@ ul {
   .hero-section .image-container {
       max-width: 100%;
       width: 100%;
+      height: 100%;
       margin-bottom: 2rem;
   }
 
@@ -11214,14 +11226,16 @@ ul {
   }
 
   .hero-section .blob-image {
-      max-height: 300px;
-      object-fit: contain;
+      height: auto;
+      width: 100%;
+      object-fit: cover;
   }
 
   .hero-section .blob-bg {
-      width: 80%;
+      width: 100%;
       height: 60%;
-      top: 20%;
+      top: -20%;
+      left: -20%;
   }
 }
 
