@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Health Diagnostic Website</title>
+    <title>Healthcare Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #151516;
@@ -16,164 +16,226 @@
             --light-text-color: #6c757d;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
-
         body {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
         }
 
-        .banner-section {
-            background: linear-gradient(135deg, rgba(21,21,22,0.99), rgba(105, 3, 3, 0.8)), url('/images/banner-img.jpg');
-            background-size: cover;
-            background-position: top;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding: 50px 0;
-        }
-
-        .banner-content {
-            z-index: 1;
-        }
-
-        .banner-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--bg-color);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: slideInLeft 1s ease-out;
-            position: relative;
-        }
-
-        .banner-title::after{
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 25%;
-            height: 2px;
+        .blog-card {
+            background-color: #fff;
             border-radius: 10px;
-            width: 50%;
-            background-color: white;
-
-        }
-
-        .banner-subtitle {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            color: var(--accent-hover-color);
-            animation: slideInRight 1s ease-out 0.5s;
-            animation-fill-mode: both;
-        }
-
-        .banner-shape {
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
             overflow: hidden;
-            line-height: 0;
-            transform: rotate(180deg);
-        }
-
-        .banner-shape svg {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
             position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 50px;
         }
 
-        .banner-shape .shape-fill {
-            fill: var(--bg-color);
+        .blog-card-content {
+            padding: 1.5rem;
         }
 
-        .floating-icon {
+        .blog-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .blog-meta {
+            font-size: 0.9rem;
+            color: var(--light-text-color);
+            margin-bottom: 1rem;
+        }
+
+        .blog-description {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .date-badge {
             position: absolute;
-            font-size: 2.5rem;
-            color: var(--accent-hover-color);
-            opacity: 0.7;
-            animation: float 6s ease-in-out infinite;
+            top: 20px;
+            left: 20px;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
         }
 
-        .icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
-        .icon-2 { top: 60%; left: 15%; animation-delay: 1s; }
-        .icon-3 { top: 25%; right: 10%; animation-delay: 2s; }
-        .icon-4 { top: 70%; right: 20%; animation-delay: 3s; }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        .date-badge .day {
+            font-size: 1.5rem;
+            border-bottom: 1px solid;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .date-badge .month,
+        .date-badge .year {
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
 
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .btn-read-more {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .banner-section{
-                height: 40vh;
-            }
-            .banner-title {
-                font-size: 2rem;
-            }
-            
-            .banner-subtitle {
-                font-size: 1rem;
+        .btn-read-more:hover {
+            background-color: var(--accent-hover-color);
+            color: var(--primary-color);
+        }
+
+        .latest-posts {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .latest-posts h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .latest-posts a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .latest-posts a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px){
+            .blog-image{
+                height: 200px;
             }
 
-            .banner-shape svg {
-                height: 30px;
+            .blog-title{
+                font-size: 1.2rem;
+            }
+            .date-badge .day{
+                font-size: 1.2rem;
             }
 
-            .floating-icon{
-                font-size: 1.5rem;
-            }
+            .date-badge .month,
+            .date-badge .year {
+            font-size: 0.6rem;
+        }
         }
     </style>
 </head>
 <body>
-    <section class="banner-section">
-        <div class="container banner-content d-flex justify-content-center align-items-center flex-column">
-            <h1 class="banner-title">About Us</h1>
-            <p class="banner-subtitle">Lorem ipsum dolor sit amet.</p>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div id="blogPosts">
+                    <!-- Blog posts will be dynamically added here -->
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="latest-posts">
+                    <h4>Latest Posts</h4>
+                    <ul class="list-unstyled" id="latestPosts">
+                        <!-- Latest posts will be dynamically added here -->
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="floating-icon icon-1"><i class="fas fa-heartbeat"></i></div>
-        <div class="floating-icon icon-2"><i class="fas fa-stethoscope"></i></div>
-        <div class="floating-icon icon-3"><i class="fas fa-user-md"></i></div>
-        <div class="floating-icon icon-4"><i class="fas fa-pills"></i></div>
-        <div class="banner-shape">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill"></path>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Rest of your page content -->
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const blogPosts = [
+            {
+                title: "Hemophilia: Types, Symptoms and Causes",
+                image: "images/banner-img.jpg",
+                author: "Suborna Fermi",
+                date: "2024-07-26",
+                description: "Hemophilia, a rare, inherited blood disorder occurs when the blood does not clot as it should. This can lead to spontaneous bleeding after an injury or surgery. Hemophilia happens when a person has low levels of clotting factor. Easy bruising, nosebleeds, and blood in urine or feces are the common signs of hemophilia. What is hemophilia? Hemophilia is a rare, inherited blood disorder that ..."
+            },
+            {
+                title: "Hemophilia: Types, Symptoms and Causes",
+                image: "images/banner-img.jpg",
+                author: "Suborna Fermi",
+                date: "2024-07-26",
+                description: "Hemophilia, a rare, inherited blood disorder occurs when the blood does not clot as it should. This can lead to spontaneous bleeding after an injury or surgery. Hemophilia happens when a person has low levels of clotting factor. Easy bruising, nosebleeds, and blood in urine or feces are the common signs of hemophilia. What is hemophilia? Hemophilia is a rare, inherited blood disorder that ..."
+            },
+            // Add more blog posts here
+        ];
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const month = date.toLocaleString('default', { month: 'short' });
+            const day = date.getDate();
+            const year = date.getFullYear();
+            return { month, day, year };
+        }
+
+        function createBlogPost(post) {
+            const { month, day, year } = formatDate(post.date);
+            return `
+                <div class="blog-card">
+                    <div class="date-badge">
+                        <div class="day">${day}</div>
+                        <div class="month">${month}</div>
+                        <div class="year">${year}</div>
+                    </div>
+                    <img src="${post.image}" alt="${post.title}" class="blog-image">
+                    <div class="blog-card-content">
+                        <h2 class="blog-title">${post.title}</h2>
+                        <div class="blog-meta">
+                            Posted by ${post.author} on ${month} ${day}, ${year}
+                        </div>
+                        <p class="blog-description">${post.description}</p>
+                        <a href="#" class="btn-read-more">READ MORE</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createLatestPost(post) {
+            const { month, day, year } = formatDate(post.date);
+            return `
+                <li class="mb-3">
+                    <a href="#">
+                        <h6 class="mb-0">${post.title}</h6>
+                        <small>${month} ${day}, ${year}</small>
+                    </a>
+                </li>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogPostsContainer = document.getElementById('blogPosts');
+            const latestPostsContainer = document.getElementById('latestPosts');
+
+            blogPosts.forEach(post => {
+                blogPostsContainer.innerHTML += createBlogPost(post);
+            });
+
+            blogPosts.slice(0, 3).forEach(post => {
+                latestPostsContainer.innerHTML += createLatestPost(post);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -133,3 +133,5 @@ const swiper = new Swiper('.hero-section .swiper-container', {
         disableOnInteraction: false,
     },
 });
+
+
