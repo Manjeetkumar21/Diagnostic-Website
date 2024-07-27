@@ -11619,22 +11619,6 @@ ul {
   text-transform: uppercase;
 }
 
-.btn-read-more {
-  background-color: var(--accent-color);
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-.btn-read-more:hover {
-  background-color: var(--accent-hover-color);
-  color: var(--primary-color);
-}
-
 .latest-posts {
   background-color: #fff;
   border-radius: 10px;
@@ -11645,7 +11629,8 @@ ul {
 .latest-posts h4 {
   color: var(--primary-color);
   margin-bottom: 1rem !important;
-  font-weight: 500;
+  font-size: 1.2rem !important;
+  font-weight: 600;
 }
 
 .latest-posts a {

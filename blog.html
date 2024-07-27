@@ -284,25 +284,47 @@
   <section class="blogs-section float_left">
    <div class="container mt-5">
       <div class="row">
-          <div class="col-lg-8">
-              <div id="blogPosts">
-                  <!-- Blog posts will be dynamically added here javascript-->
-              </div>
-          </div>
-          <div class="col-lg-4">
-              <div class="latest-posts">
-                  <h4 class="fs-4">Latest Posts</h4>
-                  <ul class="list-unstyled" id="latestPosts">
-                      <!-- Latest posts will be dynamically added here by javascript -->
-                  </ul>
-              </div>
-          </div>
-      </div>
+         <div class="col-lg-8">
+             <div id="blogPosts">
+                 <div class="blog-card">
+                     <div class="date-badge">
+                         <div class="day">26</div>
+                         <div class="month">Jul</div>
+                         <div class="year">2024</div>
+                     </div>
+                     <img src="images/banner-img.jpg" alt="Hemophilia: Types, Symptoms and Causes" class="blog-image">
+                     <div class="blog-card-content">
+                         <h2 class="blog-title">Hemophilia: Types, Symptoms and Causes</h2>
+                         <div class="blog-meta">
+                             Posted by Suborna Fermi on Jul 26, 2024
+                         </div>
+                         <p class="blog-description">
+                             Hemophilia, a rare, inherited blood disorder occurs when the blood does not clot as it should. This can lead to spontaneous bleeding after an injury or surgery. Hemophilia happens when a person has low levels of clotting factor. Easy bruising, nosebleeds, and blood in urine or feces are the common signs of hemophilia. What is hemophilia? Hemophilia is a rare, inherited blood disorder that ...
+                         </p>
+                         <a href="#" class="button-btn bg-yellow mt-4">read more
+                         <span><i class="fas fa-angle-double-right"></i></span>
+                         </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="col-lg-4">
+             <div class="latest-posts">
+                 <h4 >Latest Posts</h4>
+                 <ul class="list-unstyled" id="latestPosts">
+                     <li class="mb-3">
+                         <a href="#">
+                             <h6 class="mb-0 fs-6">Hemophilia: Types, Symptoms and Causes</h6>
+                             <small class="text-secondary">Jul 26, 2024</small>
+                         </a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </div>
   </div>
   </section>
-   <!-- footer section end -->
-   <!-- footer section end -->
-   <!-- Side Panel -->
+
    <script src="js/jquery-3.6.0.min.js"></script>
    <script src="js/bootstrap.min.js"></script>
    <script src="js/wow.js"></script>
@@ -323,82 +345,6 @@
          }
       );
       wow.init();
-
-      const blogPosts = [
-    {
-        title: "Hemophilia: Types, Symptoms and Causes",
-        image: "images/banner-img.jpg",
-        author: "Suborna Fermi",
-        date: "2024-07-26",
-        description: "Hemophilia, a rare, inherited blood disorder occurs when the blood does not clot as it should. This can lead to spontaneous bleeding after an injury or surgery. Hemophilia happens when a person has low levels of clotting factor. Easy bruising, nosebleeds, and blood in urine or feces are the common signs of hemophilia. What is hemophilia? Hemophilia is a rare, inherited blood disorder that ..."
-    },
-    {
-        title: "Hemophilia: Types, Symptoms and Causes",
-        image: "images/banner-img.jpg",
-        author: "Suborna Fermi",
-        date: "2024-07-26",
-        description: "Hemophilia, a rare, inherited blood disorder occurs when the blood does not clot as it should. This can lead to spontaneous bleeding after an injury or surgery. Hemophilia happens when a person has low levels of clotting factor. Easy bruising, nosebleeds, and blood in urine or feces are the common signs of hemophilia. What is hemophilia? Hemophilia is a rare, inherited blood disorder that ..."
-    },
-    // Add more blog posts here...
-];
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    const month = date.toLocaleString('default', { month: 'short' });
-    const day = date.getDate();
-    const year = date.getFullYear();
-    return { month, day, year };
-}
-
-function createBlogPost(post) {
-    const { month, day, year } = formatDate(post.date);
-    return `
-        <div class="blog-card">
-            <div class="date-badge">
-                <div class="day">${day}</div>
-                <div class="month">${month}</div>
-                <div class="year">${year}</div>
-            </div>
-            <img src="${post.image}" alt="${post.title}" class="blog-image">
-            <div class="blog-card-content">
-                <h2 class="blog-title">${post.title}</h2>
-                <div class="blog-meta">
-                    Posted by ${post.author} on ${month} ${day}, ${year}
-                </div>
-                <p class="blog-description">${post.description}</p>
-                <a href="#" class="button-btn bg-yellow mt-4"
-                >read more
-                <span><i class="fas fa-angle-double-right"></i></span>
-              </a>
-            </div>
-        </div>
-    `;
-}
-
-function createLatestPost(post) {
-    const { month, day, year } = formatDate(post.date);
-    return `
-        <li class="mb-3">
-            <a href="#">
-                <h6 class="mb-0 fs-6 latest-post-title">${post.title}</h6>
-                <small>${month} ${day}, ${year}</small>
-            </a>
-        </li>
-    `;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const blogPostsContainer = document.getElementById('blogPosts');
-    const latestPostsContainer = document.getElementById('latestPosts');
-
-    blogPosts.forEach(post => {
-        blogPostsContainer.innerHTML += createBlogPost(post);
-    });
-
-    blogPosts.slice(0, 3).forEach(post => {
-        latestPostsContainer.innerHTML += createLatestPost(post);
-    });
-});
    </script>
 </body>
 
