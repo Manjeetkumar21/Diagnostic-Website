@@ -1,5 +1,3 @@
-
-
 const swiper = new Swiper('.hero-section .swiper-container', {
     loop: true,
     pagination: {
