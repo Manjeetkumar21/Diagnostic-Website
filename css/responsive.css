@@ -404,7 +404,7 @@
 }
 
 /*-- width 360 --*/
-@media (max-width: 360px) {
+@media (max-width: 460px) {
   .image-about-wrapper .image-section .image-content {
     left: 5px;
   }
