@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Health Package Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #151516;
+            --accent-color: #b60605;
+            --accent-hover-color: #f7d3d3;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --light-text-color: #6c757d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .booking-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .booking-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: #ffffff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .booking-header h2 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .booking-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .booking-form, .package-details {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(182, 6, 5, 0.15);
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, var(--accent-color), #d10a09);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(182, 6, 5, 0.3);
+        }
+
+        .package-details {
+            background-color: var(--bg-color);
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .package-summary {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .package-summary h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .summary-item i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .features-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .testimonial {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .booking-content {
+                flex-direction: column;
+            }
+            .package-details {
+                border-left: none;
+                border-top: 1px solid #e0e0e0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <div class="booking-header">
+            <h2>Luxury Health Package Booking</h2>
+            <p>Experience premium care tailored just for you</p>
+        </div>
+        <div class="booking-content">
+            <div class="booking-form">
+                <h3 class="mb-4">Personal Details</h3>
+                <form id="bookingForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="date" placeholder="Select Date" required>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="time" required>
+                            <option value="">Preferred Time Slot</option>
+                            <option value="09:00">09:00 AM - 11:00 AM</option>
+                            <option value="11:00">11:00 AM - 01:00 PM</option>
+                            <option value="14:00">02:00 PM - 04:00 PM</option>
+                            <option value="16:00">04:00 PM - 06:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or notes?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-book">Confirm Your Luxury Experience</button>
+                </form>
+            </div>
+            <div class="package-details">
+                <div class="package-summary">
+                    <h4>Premium Health Package</h4>
+                    <div class="summary-item">
+                        <span><i class="fas fa-tag"></i> Price:</span>
+                        <span>$399</span>
+                    </div>
+                    <div class="summary-item">
+                        <span><i class="fas fa-clock"></i> Duration:</span>
+                        <span>3 hours</span>
+                    </div>
+                    <div class="summary-item">
+                        <span><i class="fas fa-user-md"></i> Lead Doctor:</span>
+                        <span>Dr. Emily Chen</span>
+                    </div>
+                </div>
+                <h5 class="mb-3">Package Highlights:</h5>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Comprehensive Health Screening</li>
+                    <li><i class="fas fa-check-circle"></i> Full Body Composition Analysis</li>
+                    <li><i class="fas fa-check-circle"></i> Stress and Lifestyle Assessment</li>
+                    <li><i class="fas fa-check-circle"></i> Personalized Health Plan</li>
+                    <li><i class="fas fa-check-circle"></i> Follow-up Consultation</li>
+                </ul>
+                <div class="testimonial">
+                    <p>"The Premium Health Package exceeded my expectations. The care and attention to detail were outstanding!"</p>
+                    <span class="testimonial-author">- Sarah J., Satisfied Client</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#date", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Your luxury health package has been booked successfully! We look forward to providing you with an exceptional experience.');
+        });
+    </script>
+</body>
+</html>
