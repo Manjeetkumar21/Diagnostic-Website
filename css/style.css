@@ -11686,7 +11686,7 @@ ul {
 /* Services Swipper */
 
 .services-section {
-  /* You can add any general styles for the section here */
+ 
 }
 
 .services-grid {
@@ -11875,4 +11875,135 @@ ul {
   color: white;
   font-size: 1rem;
   padding: 0.5em 1em;
+}
+
+/* Blog Details */
+
+.blog-details-section{
+  padding: 60px 0px;
+}
+
+.blog-details-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.blog-details-section .blog-details {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.blog-details-section .blog-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.blog-details-section .blog-content {
+  padding: 2rem;
+}
+.blog-details-section .blog-title {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.blog-details-section .blog-meta {
+  color: var(--light-text-color);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.blog-details-section .blog-text {
+  margin-bottom: 2rem;
+}
+.blog-details-section .blog-text h2 {
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.blog-details-section .blog-text ul {
+  padding-left: 0.5rem;
+  color: var(--light-text-color);
+}
+
+.blog-details-section .blog-text li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 5px;
+  color: var(--light-text-color);
+}
+
+.blog-details-section .blog-text li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.blog-details-section .blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.blog-details-section .tag {
+  background-color: var(--accent-hover-color);
+  color: var(--accent-color);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+.blog-details-section .blog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+.blog-details-section .share-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.blog-details-section .share-button {
+  color: var(--light-text-color);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.blog-details-section .share-button:hover {
+  color: var(--accent-color);
+}
+.blog-details-section .back-button {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.blog-details-section .back-button:hover {
+  background-color: var(--primary-color);
+}
+@media (max-width: 768px) {
+  .blog-details-section .container {
+      padding: 1rem;
+  }
+  .blog-details-section .blog-image {
+      height: 250px;
+  }
+  .blog-details-section .blog-content {
+      padding: 1rem;
+  }
+  .blog-details-section .blog-title {
+      font-size: 1.5rem;
+  }
+  .blog-details-section .blog-text h2 {
+      font-size: 1.2rem;
+  }
+  .blog-details-section .blog-text ul{
+    font-size: 0.9rem;
+  }
 }
