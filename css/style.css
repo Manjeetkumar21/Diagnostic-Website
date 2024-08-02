@@ -12010,148 +12010,131 @@ ul {
 
 /* Packages Section */
 
-.packages-section {
-  margin-bottom: 30px;
-  background-color: var(--bg-color);
+.packages-section{
+  padding: 60px 0px;
 }
 
-.packages-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 30px 0;
+.packages-section .card {
+  border: 1px solid #e0e0e0;;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
-
-.package-card {
-  background: var(--bg-color);
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+.packages-section .card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+.packages-section .image-container {
+  position: relative;
+  overflow: hidden;
+}
+.packages-section .two-column-list {
   display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style: none;
+}
+.packages-section .two-column-list li {
+  flex-basis: 50%;
+  padding: 2px 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.packages-section .hover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(21, 21, 22, 0.9);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding: 10px;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
-
-.package-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+.packages-section .card:hover .hover-content {
+  opacity: 1;
 }
-
-.package-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px 12px 0 0;
-  margin-bottom: 20px;
-}
-
-.package-card h3 {
-  color: var(--primary-color);
-  font-weight: 600;
-  margin-bottom: 15px;
+.packages-section .hover-content h5 {
   font-size: 1rem;
+  margin-bottom: 10px;
+  color: white;
 }
-
-.package-card .description {
-  color: var(--light-text-color);
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-  line-height: 1.6;
+.packages-section .hover-content ul {
+  font-size: 0.75rem;
+  padding-left: 10px;
 }
-
-.package-card .price-container {
+.packages-section .card-title {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.packages-section .card-text {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.packages-section .test-badge {
+  background-color: #b7b9bb61;
+  border: 1px solid #c3c2c2;
+  color: var(--primary-color) !important;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 5px 10px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.packages-section .price-button-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 }
-
-.package-card .price {
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: var(--primary-color);
-}
-
-.package-card .original-price {
+.packages-section .old-price {
   text-decoration: line-through;
   color: var(--light-text-color);
-  margin-left: 10px;
+  font-size: 0.9rem;
 }
-
-.package-card .discount-badge {
+.packages-section .new-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+.packages-section .btn-book-now {
   background-color: var(--accent-color);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.package-card .button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.package-card .btn-book-now,
-.package-card .btn-add-cart {
-  padding: 7px 15px;
-  font-size: 0.9rem;
   border: none;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.package-card .btn-book-now {
-  background-color: var(--primary-color);
   color: white;
+  transition: background-color 0.3s;
 }
-
-.package-card .btn-add-cart {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  outline: 1px solid black;
-  transition: 0.2s ease-in-out;
+.packages-section .btn-book-now:hover {
+  background-color: var(--accent-hover-color);
+  color: var(--accent-color);
 }
-
-.package-card .btn-book-now:hover{
-  opacity: 0.9;
+.packages-section .card-footer {
+  background-color: var(--bg-color);
+  border-top: 1px solid #e0e0e0;
 }
-
-.package-card .btn-add-cart:hover {
-  background-color: #000;
-  color: white;
+.packages-section .logo-in-card img {
+  height: 70px;
 }
-
 @media (max-width: 768px) {
-  .packages-grid {
-    grid-template-columns: 1fr;
+  .packages-section .logo-in-card img {
+      height: 60px;
   }
-
-  .package-image {
-    height: 200px;
-  }
-
-  .package-card h3,
-  .package-card .price {
-    font-size: 1rem;
-  }
-
-  .package-card .button-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .package-card .btn-book-now,
-  .package-card .btn-add-cart {
-    width: 100%;
+  .packages-section .text-muted-content {
+      font-size: 0.7rem;
   }
 }
-
 
 /* Package Booking */
 
+.booking-section{
+  padding: 10px;
+}
 .booking-section .booking-container {
   max-width: 1000px;
   margin: 50px auto;
@@ -12177,9 +12160,9 @@ ul {
 
 .booking-section h3,
 .booking-section h3{
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 10px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .booking-section .booking-header p{
@@ -12194,14 +12177,14 @@ ul {
 .booking-section .booking-form,
 .booking-section .package-details {
   flex: 1;
-  padding: 40px;
+  padding: 20px;
 }
 
 .booking-section .form-control,
 .booking-section .form-select {
   border: 2px solid #e0e0e0;
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px 15px;
   margin-bottom: 20px;
   transition: all 0.3s ease;
 }
@@ -12234,6 +12217,11 @@ ul {
   border-left: 1px solid #e0e0e0;
 }
 
+.booking-section .package-details h5{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
 .booking-section .package-summary {
   background-color: #ffffff;
   border-radius: 15px;
@@ -12246,13 +12234,14 @@ ul {
   color: var(--primary-color);
   margin-bottom: 20px;
   font-weight: 600;
+  font-size: 1.3rem;
 }
 
 .booking-section .summary-item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-  font-size: 1.1em;
+  font-size: 1rem;
 }
 
 .booking-section .summary-item i {

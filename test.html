@@ -1,246 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Health Package Booking</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Test Card</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary-color: #151516;
-            --accent-color: #b60605;
-            --accent-hover-color: #f7d3d3;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --light-text-color: #6c757d;
+      :root {
+        --primary-color: #151516;
+        --accent-color: #b60605;
+        --accent-hover-color: #f7d3d3;
+        --bg-color: #f8f9fa;
+        --text-color: #333;
+        --light-text-color: #6c757d;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      .card {
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+
+      .card-img-top {
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .image-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .two-column-list {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .two-column-list li {
+        flex-basis: 50%;
+        padding: 2px 5px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      .hover-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(21, 21, 22, 0.9);
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s;
+        padding: 10px;
+        border-radius: 5px 5px 0px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .card:hover .hover-content {
+        opacity: 1;
+      }
+
+      .hover-content h5 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      .hover-content ul {
+        font-size: 0.75rem;
+        padding-left: 10px;
+      }
+
+      .card-title {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .card-text {
+        color: var(--text-color);
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .test-badge{
+        background-color: #b7b9bb61;
+        border: 1px solid #c3c2c2;
+        color: var(--primary-color) !important;
+        font-weight: 600;
+        border-radius: 25px;
+        padding: 5px 10px;
+        text-align: center;
+
+      }
+
+      .price-button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .old-price {
+        text-decoration: line-through;
+        color: var(--light-text-color);
+        font-size: 0.9rem;
+      }
+
+      .new-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--accent-color);
+      }
+
+      .btn-book-now {
+        background-color: var(--accent-color);
+        border: none;
+        color: white;
+        transition: background-color 0.3s;
+      }
+
+      .btn-book-now:hover {
+        background-color: var(--accent-hover-color);
+        color: var(--accent-color);
+      }
+
+      .card-footer {
+        background-color: var(--bg-color);
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .logo-in-card img{
+            height: 70px;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Poppins', sans-serif;
+      @media (max-width: 768px) {
+        .logo-in-card img{
+            height: 60px;
         }
 
-        .booking-container {
-            max-width: 1000px;
-            margin: 50px auto;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
+        .text-muted-content{
+            font-size: 0.7rem;
         }
-
-        .booking-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: #ffffff;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .booking-header h2 {
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .booking-content {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .booking-form, .package-details {
-            flex: 1;
-            padding: 40px;
-        }
-
-        .form-control, .form-select {
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus, .form-select:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 0.2rem rgba(182, 6, 5, 0.15);
-        }
-
-        .btn-book {
-            background: linear-gradient(135deg, var(--accent-color), #d10a09);
-            color: #ffffff;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .btn-book:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(182, 6, 5, 0.3);
-        }
-
-        .package-details {
-            background-color: var(--bg-color);
-            border-left: 1px solid #e0e0e0;
-        }
-
-        .package-summary {
-            background-color: #ffffff;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .package-summary h4 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-
-        .summary-item i {
-            color: var(--accent-color);
-            margin-right: 10px;
-        }
-
-        .features-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .features-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .features-list i {
-            color: var(--accent-color);
-            margin-right: 10px;
-        }
-
-        .testimonial {
-            background-color: #ffffff;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        @media (max-width: 768px) {
-            .booking-content {
-                flex-direction: column;
-            }
-            .package-details {
-                border-left: none;
-                border-top: 1px solid #e0e0e0;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-    <div class="booking-container">
-        <div class="booking-header">
-            <h2>Luxury Health Package Booking</h2>
-            <p>Experience premium care tailored just for you</p>
-        </div>
-        <div class="booking-content">
-            <div class="booking-form">
-                <h3 class="mb-4">Personal Details</h3>
-                <form id="bookingForm">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="name" placeholder="Full Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="email" class="form-control" id="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="date" placeholder="Select Date" required>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-select" id="time" required>
-                            <option value="">Preferred Time Slot</option>
-                            <option value="09:00">09:00 AM - 11:00 AM</option>
-                            <option value="11:00">11:00 AM - 01:00 PM</option>
-                            <option value="14:00">02:00 PM - 04:00 PM</option>
-                            <option value="16:00">04:00 PM - 06:00 PM</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or notes?"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-book">Confirm Your Luxury Experience</button>
-                </form>
-            </div>
-            <div class="package-details">
-                <div class="package-summary">
-                    <h4>Premium Health Package</h4>
-                    <div class="summary-item">
-                        <span><i class="fas fa-tag"></i> Price:</span>
-                        <span>$399</span>
-                    </div>
-                    <div class="summary-item">
-                        <span><i class="fas fa-clock"></i> Duration:</span>
-                        <span>3 hours</span>
-                    </div>
-                    <div class="summary-item">
-                        <span><i class="fas fa-user-md"></i> Lead Doctor:</span>
-                        <span>Dr. Emily Chen</span>
-                    </div>
-                </div>
-                <h5 class="mb-3">Package Highlights:</h5>
-                <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> Comprehensive Health Screening</li>
-                    <li><i class="fas fa-check-circle"></i> Full Body Composition Analysis</li>
-                    <li><i class="fas fa-check-circle"></i> Stress and Lifestyle Assessment</li>
-                    <li><i class="fas fa-check-circle"></i> Personalized Health Plan</li>
-                    <li><i class="fas fa-check-circle"></i> Follow-up Consultation</li>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="image-container">
+              <img
+                src="images/blog-img1.jpg"
+                class="card-img-top"
+                alt="Aarogyam Male"
+              />
+              <div class="hover-content">
+                <h5 class="text-center">Aarogyam Male (103 Tests) <b>@Rs. 2199.00</b></h5>
+                <ul class="two-column-list">
+                  <li>Cardiac Risk Markers (5)</li>
+                  <li>Complete Hemogram (28)</li>
+                  <li>Diabetics (2)</li>
+                  <li>Iron (4)</li>
+                  <li>Lipid Profile (10)</li>
+                  <li>Liver (12)</li>
+                  <li>Toxic Elements(22)</li>
+                  <li>Kidney (7)</li>
+                  <li>Thyroid Profile (3)</li>
+                  <li>Vitamin (3)</li>
+                  <li>Pancreatic (2)</li>
+                  <li>Electrolytes (3)</li>
+                  <li>Testosterone</li>
+                  <li>Prostate Specific Antigen - PSA</li>
                 </ul>
-                <div class="testimonial">
-                    <p>"The Premium Health Package exceeded my expectations. The care and attention to detail were outstanding!"</p>
-                    <span class="testimonial-author">- Sarah J., Satisfied Client</span>
-                </div>
+              </div>
             </div>
+            <div class="card-body">
+              <h5 class="card-title">Aarogyam Male</h5>
+              <p class="card-text">
+                Tests includes Cardiac Risk Markers, CBC, HbA1c, Iron, Lipid,
+                Liver, Kidney, Thyroid, Vitamin, Pancreas, Electrolytes.
+              </p>
+              <p class="test-badge">
+                <small>103 Tests</small>
+              </p>
+              <div class="price-button-container">
+                <div>
+                  <span class="old-price">₹4000</span>
+                  <span class="new-price">₹2199</span>
+                </div>
+                <a href="#" class="btn btn-book-now">Book Now</a>
+              </div>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted d-flex align-items-center g-4">
+                <div class="logo-in-card">
+                  <img
+                    src="images/home3/logo-png.png"
+                    alt="Diagnostic Point"
+                  />
+                </div>
+                <div class="text-muted-content">
+                  ✓ NABL, CAP, ISO 9001<br />
+                  ✓ Free Home Sample Pickup<br />
+                  ✓ Online Report Delivery
+                </div>
+              </small>
+            </div>
+          </div>
         </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <div class="image-container">
+                <img
+                  src="images/blog-img1.jpg"
+                  class="card-img-top"
+                  alt="Aarogyam Male"
+                />
+                <div class="hover-content">
+                  <h5 class="text-center">Aarogyam Male (103 Tests) <b>@Rs. 2199.00</b></h5>
+                  <ul class="two-column-list">
+                    <li>Cardiac Risk Markers (5)</li>
+                    <li>Complete Hemogram (28)</li>
+                    <li>Diabetics (2)</li>
+                    <li>Iron (4)</li>
+                    <li>Lipid Profile (10)</li>
+                    <li>Liver (12)</li>
+                    <li>Toxic Elements(22)</li>
+                    <li>Kidney (7)</li>
+                    <li>Thyroid Profile (3)</li>
+                    <li>Vitamin (3)</li>
+                    <li>Pancreatic (2)</li>
+                    <li>Electrolytes (3)</li>
+                    <li>Testosterone</li>
+                    <li>Prostate Specific Antigen - PSA</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Aarogyam Male</h5>
+                <p class="card-text">
+                  Tests includes Cardiac Risk Markers, CBC, HbA1c, Iron, Lipid,
+                  Liver, Kidney, Thyroid, Vitamin, Pancreas, Electrolytes.
+                </p>
+                <p class="test-badge">
+                  <small>103 Tests</small>
+                </p>
+                <div class="price-button-container">
+                  <div>
+                    <span class="old-price">₹4000</span>
+                    <span class="new-price">₹2199</span>
+                  </div>
+                  <a href="#" class="btn btn-book-now">Book Now</a>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted d-flex align-items-center g-4">
+                  <div class="logo-in-card">
+                    <img
+                      src="images/home3/logo-png.png"
+                      alt="Diagnostic Point"
+                    />
+                  </div>
+                  <div class="text-muted-content">
+                    ✓ NABL, CAP, ISO 9001<br />
+                    ✓ Free Home Sample Pickup<br />
+                    ✓ Online Report Delivery
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <div class="image-container">
+                <img
+                  src="images/blog-img1.jpg"
+                  class="card-img-top"
+                  alt="Aarogyam Male"
+                />
+                <div class="hover-content">
+                  <h5 class="text-center">Aarogyam Male (103 Tests) <b>@Rs. 2199.00</b></h5>
+                  <ul class="two-column-list">
+                    <li>Cardiac Risk Markers (5)</li>
+                    <li>Complete Hemogram (28)</li>
+                    <li>Diabetics (2)</li>
+                    <li>Iron (4)</li>
+                    <li>Lipid Profile (10)</li>
+                    <li>Liver (12)</li>
+                    <li>Toxic Elements(22)</li>
+                    <li>Kidney (7)</li>
+                    <li>Thyroid Profile (3)</li>
+                    <li>Vitamin (3)</li>
+                    <li>Pancreatic (2)</li>
+                    <li>Electrolytes (3)</li>
+                    <li>Testosterone</li>
+                    <li>Prostate Specific Antigen - PSA</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Aarogyam Male</h5>
+                <p class="card-text">
+                  Tests includes Cardiac Risk Markers, CBC, HbA1c, Iron, Lipid,
+                  Liver, Kidney, Thyroid, Vitamin, Pancreas, Electrolytes.
+                </p>
+                <p class="test-badge">
+                  <small>103 Tests</small>
+                </p>
+                <div class="price-button-container">
+                  <div>
+                    <span class="old-price">₹4000</span>
+                    <span class="new-price">₹2199</span>
+                  </div>
+                  <a href="#" class="btn btn-book-now">Book Now</a>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted d-flex align-items-center g-4">
+                  <div class="logo-in-card">
+                    <img
+                      src="images/home3/logo-png.png"
+                      alt="Diagnostic Point"
+                    />
+                  </div>
+                  <div class="text-muted-content">
+                    ✓ NABL, CAP, ISO 9001<br />
+                    ✓ Free Home Sample Pickup<br />
+                    ✓ Online Report Delivery
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <div class="image-container">
+                <img
+                  src="images/blog-img1.jpg"
+                  class="card-img-top"
+                  alt="Aarogyam Male"
+                />
+                <div class="hover-content">
+                  <h5 class="text-center">Aarogyam Male (103 Tests) <b>@Rs. 2199.00</b></h5>
+                  <ul class="two-column-list">
+                    <li>Cardiac Risk Markers (5)</li>
+                    <li>Complete Hemogram (28)</li>
+                    <li>Diabetics (2)</li>
+                    <li>Iron (4)</li>
+                    <li>Lipid Profile (10)</li>
+                    <li>Liver (12)</li>
+                    <li>Toxic Elements(22)</li>
+                    <li>Kidney (7)</li>
+                    <li>Thyroid Profile (3)</li>
+                    <li>Vitamin (3)</li>
+                    <li>Pancreatic (2)</li>
+                    <li>Electrolytes (3)</li>
+                    <li>Testosterone</li>
+                    <li>Prostate Specific Antigen - PSA</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Aarogyam Male</h5>
+                <p class="card-text">
+                  Tests includes Cardiac Risk Markers, CBC, HbA1c, Iron, Lipid,
+                  Liver, Kidney, Thyroid, Vitamin, Pancreas, Electrolytes.
+                </p>
+                <p class="test-badge">
+                  <small>103 Tests</small>
+                </p>
+                <div class="price-button-container">
+                  <div>
+                    <span class="old-price">₹4000</span>
+                    <span class="new-price">₹2199</span>
+                  </div>
+                  <a href="#" class="btn btn-book-now">Book Now</a>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted d-flex align-items-center g-4">
+                  <div class="logo-in-card">
+                    <img
+                      src="images/home3/logo-png.png"
+                      alt="Diagnostic Point"
+                    />
+                  </div>
+                  <div class="text-muted-content">
+                    ✓ NABL, CAP, ISO 9001<br />
+                    ✓ Free Home Sample Pickup<br />
+                    ✓ Online Report Delivery
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <div class="image-container">
+                <img
+                  src="images/blog-img1.jpg"
+                  class="card-img-top"
+                  alt="Aarogyam Male"
+                />
+                <div class="hover-content">
+                  <h5 class="text-center">Aarogyam Male (103 Tests) <b>@Rs. 2199.00</b></h5>
+                  <ul class="two-column-list">
+                    <li>Cardiac Risk Markers (5)</li>
+                    <li>Complete Hemogram (28)</li>
+                    <li>Diabetics (2)</li>
+                    <li>Iron (4)</li>
+                    <li>Lipid Profile (10)</li>
+                    <li>Liver (12)</li>
+                    <li>Toxic Elements(22)</li>
+                    <li>Kidney (7)</li>
+                    <li>Thyroid Profile (3)</li>
+                    <li>Vitamin (3)</li>
+                    <li>Pancreatic (2)</li>
+                    <li>Electrolytes (3)</li>
+                    <li>Testosterone</li>
+                    <li>Prostate Specific Antigen - PSA</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Aarogyam Male</h5>
+                <p class="card-text">
+                  Tests includes Cardiac Risk Markers, CBC, HbA1c, Iron, Lipid,
+                  Liver, Kidney, Thyroid, Vitamin, Pancreas, Electrolytes.
+                </p>
+                <p class="test-badge">
+                  <small>103 Tests</small>
+                </p>
+                <div class="price-button-container">
+                  <div>
+                    <span class="old-price">₹4000</span>
+                    <span class="new-price">₹2199</span>
+                  </div>
+                  <a href="#" class="btn btn-book-now">Book Now</a>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted d-flex align-items-center g-4">
+                  <div class="logo-in-card">
+                    <img
+                      src="images/home3/logo-png.png"
+                      alt="Diagnostic Point"
+                    />
+                  </div>
+                  <div class="text-muted-content">
+                    ✓ NABL, CAP, ISO 9001<br />
+                    ✓ Free Home Sample Pickup<br />
+                    ✓ Online Report Delivery
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <div class="image-container">
+                <img
+                  src="images/blog-img1.jpg"
+                  class="card-img-top"
+                  alt="Aarogyam Male"
+                />
+                <div class="hover-content">
+                  <h5 class="text-center">Aarogyam Male (103 Tests) <b>@Rs. 2199.00</b></h5>
+                  <ul class="two-column-list">
+                    <li>Cardiac Risk Markers (5)</li>
+                    <li>Complete Hemogram (28)</li>
+                    <li>Diabetics (2)</li>
+                    <li>Iron (4)</li>
+                    <li>Lipid Profile (10)</li>
+                    <li>Liver (12)</li>
+                    <li>Toxic Elements(22)</li>
+                    <li>Kidney (7)</li>
+                    <li>Thyroid Profile (3)</li>
+                    <li>Vitamin (3)</li>
+                    <li>Pancreatic (2)</li>
+                    <li>Electrolytes (3)</li>
+                    <li>Testosterone</li>
+                    <li>Prostate Specific Antigen - PSA</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Aarogyam Male</h5>
+                <p class="card-text">
+                  Tests includes Cardiac Risk Markers, CBC, HbA1c, Iron, Lipid,
+                  Liver, Kidney, Thyroid, Vitamin, Pancreas, Electrolytes.
+                </p>
+                <p class="test-badge">
+                  <small>103 Tests</small>
+                </p>
+                <div class="price-button-container">
+                  <div>
+                    <span class="old-price">₹4000</span>
+                    <span class="new-price">₹2199</span>
+                  </div>
+                  <a href="#" class="btn btn-book-now">Book Now</a>
+                </div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted d-flex align-items-center g-4">
+                  <div class="logo-in-card">
+                    <img
+                      src="images/home3/logo-png.png"
+                      alt="Diagnostic Point"
+                    />
+                  </div>
+                  <div class="text-muted-content">
+                    ✓ NABL, CAP, ISO 9001<br />
+                    ✓ Free Home Sample Pickup<br />
+                    ✓ Online Report Delivery
+                  </div>
+                </small>
+              </div>
+            </div>
+          </div>
+          
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        flatpickr("#date", {
-            minDate: "today",
-            dateFormat: "Y-m-d",
-        });
-
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Your luxury health package has been booked successfully! We look forward to providing you with an exceptional experience.');
-        });
-    </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
