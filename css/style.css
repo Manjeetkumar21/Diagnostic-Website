@@ -12330,3 +12330,54 @@ ul {
   transform: translateY(-50%);
   color: var(--primary-color);
 }
+
+
+/* Services/Package Small cards */
+
+.service-small-cards{
+  margin-bottom: 30px;
+  padding: 0px 20px;
+}
+
+.service-small-cards .info-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+.service-small-cards .info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+.service-small-cards .info-icon {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-hover-color);
+  border-radius: 5px;
+  padding: 25px;
+  margin-right: 15px;
+}
+
+.service-small-cards .info-icon i{
+  font-size: 2rem;
+}
+.service-small-cards .info-title {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.service-small-cards .info-text {
+  color: var(--light-text-color);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+.service-small-cards .card-content {
+  padding: 10px;
+}
