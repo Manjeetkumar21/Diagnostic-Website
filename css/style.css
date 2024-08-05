@@ -11082,7 +11082,7 @@ ul {
 .hero-section .swiper-container {
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   overflow: hidden;
   padding: 0px 60px;
   background: linear-gradient(135deg, var(--bg-color) 0%, var(--accent-hover-color) 100%);
