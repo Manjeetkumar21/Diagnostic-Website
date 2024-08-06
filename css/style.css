@@ -12483,6 +12483,51 @@ ul {
   color: var(--accent-color);
 }
 
+.test-logosf{
+  padding: 20px 0px;
+  background-color: var(--bg-color);
+}
+
+.test-logos .container{
+  max-width: 1200px;
+  margin: 0px auto;
+  background-color: var(--bg-color);
+}
+
+.test-logos .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.test-logos .logo-img {
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.blood-test-home {
+  background-color: #f8f9fa;
+}
+
+.blood-test-home h2 {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.blood-test-home .lead {
+  color: #495057;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.blood-test-home .highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
 @media (max-width: 480px) {
   .blood-test-section .test-name {
     font-size: 1rem;
@@ -12498,5 +12543,15 @@ ul {
   .blood-test-section .btn-book{
     padding: 0.375rem 0.75rem;
   }
+
+  .test-logos .logo-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  
+.blood-test-home .lead{
+  font-size: 1rem;
+}
   
 }
