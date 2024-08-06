@@ -258,9 +258,6 @@
 
 /*---width 580--*/
 @media (max-width: 580px) {
-  br {
-    display: none;
-  }
   .image-about-wrapper .image-section .image-content {
     left: 30px;
     top: 0;
